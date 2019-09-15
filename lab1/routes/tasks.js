@@ -55,7 +55,7 @@ router.post("/tasks", async (req, res) => {
     res.status(400).json({error:"No data found for hoursEstimated"})
     return;
   }
-  if(!body.completed) {
+  if(body.completed == null) {
     res.status(400).json({error:"No data found for completed"})
     return;
   }
@@ -81,17 +81,17 @@ router.patch("/tasks/:id", async (req, res) => {
     console.log(e);
   }
   //Singles
-  if(body.title && !body.description && !body.hoursEstimated && !body.completed) {
+  if(body.title && !body.description && !body.hoursEstimated && body.completed == null) {
     let task = await tasksData.updateTitle(id, body.title);
     res.status(200).json(task);
     return;
   }
-   else if(!body.title && body.description && !body.hoursEstimated && !body.completed) {
+   else if(!body.title && body.description && !body.hoursEstimated && body.completed == null) {
     let task = await tasksData.updateDescription(id, body.description);
     res.status(200).json(task);
     return;
   }
-  else if(!body.title && !body.description && body.hoursEstimated && !body.completed) {
+  else if(!body.title && !body.description && body.hoursEstimated && body.completed == null) {
     let task = await tasksData.updatehoursEstimated(id, body.hoursEstimated);
     res.status(200).json(task);
     return;
@@ -124,7 +124,7 @@ router.patch("/tasks/:id", async (req, res) => {
     res.status(200).json(task);
     return;
   }
-  else if(body.title && body.description && body.hoursEstimated && !body.completed) {
+  else if(body.title && body.description && body.hoursEstimated && body.completed == null ) {
     let task = await tasksData.updateDescription(id, body.description);
     task = await tasksData.updateTitle(id, body.title);
     task = await tasksData.updatehoursEstimated(id, body.hoursEstimated);
@@ -133,13 +133,13 @@ router.patch("/tasks/:id", async (req, res) => {
   }
   //end of triples
   //Doubles title first
-  else if(body.title && body.description && !body.hoursEstimated && !body.completed) {
+  else if(body.title && body.description && !body.hoursEstimated && body.completed == null) {
     let task = await tasksData.updateDescription(id, body.description);
     task = await tasksData.updateTitle(id, body.title);
     res.status(200).json(task);
     return;
   }
-  else if(body.title && !body.description && body.hoursEstimated && !body.completed) {
+  else if(body.title && !body.description && body.hoursEstimated && body.completed == null) {
     let task = await tasksData.updateTitle(id, body.title);
     task = await tasksData.updatehoursEstimated(id, body.hoursEstimated);
     res.status(200).json(task);
@@ -153,7 +153,7 @@ router.patch("/tasks/:id", async (req, res) => {
   }
   //Doubles Title done
   //Doubles Descripion
-  else if(!body.title && body.description && body.hoursEstimated && !body.completed) {
+  else if(!body.title && body.description && body.hoursEstimated && body.completed == null) {
     let task = await tasksData.updateDescription(id, body.description);
     task = await tasksData.updatehoursEstimated(id, body.hoursEstimated);
     res.status(200).json(task);
@@ -197,12 +197,12 @@ router.put("/tasks/:id", async (req, res) => {
     res.status(400).json({error:"No data found for hoursEstimated"})
     return;
   }
-  if(!body.completed) {
+  if(body.completed == null) {
     res.status(400).json({error:"No data found for completed"})
     return;
   }
   try {
-    await tasksData.get(taskId);
+    await tasksData.get(id);
   }
   catch(e) {
     res.status(404).json({error: "No id found"});
