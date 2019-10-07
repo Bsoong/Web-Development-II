@@ -1,13 +1,6 @@
-import React from 'react'
+import React, {Component} from 'react';
 
-function Child({ match }) {
-   return(
-     <div>
-     <h3>ID: {match.params.page}</h3>
-   </div>
-   )
- }
-class Pokemon extends React.Component {
+class Background extends Component {
   constructor() {
     super();
     this.state = {
@@ -27,12 +20,10 @@ class Pokemon extends React.Component {
     }
     return (
       <div>
-      <p>Hey!</p>
       {this.state.pokemon.name}
-      <Child/>
       </div>
     )
   }
 }
 
-export default Pokemon
+export default Background

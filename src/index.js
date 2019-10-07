@@ -7,19 +7,21 @@ import * as serviceWorker from './serviceWorker';
 import Berries from './components/berries'
 import Pokemon from './components/pokemon'
 import Machines from './components/machines'
-import Background from './background'
+import Background from './components/background'
 
 const routing = (
   <Router>
     <div>
-      <Route exact path="/" component={App} />
-      <Route path="/pokemon/page" component={Pokemon} />
-      <Route path="/berries/page" component={Berries} />
-      <Route path="/machines/page" component={Machines} />
+      <Route exact path="/" render={() => <div>Home</div>} component={App} />
+      <Route path="/pokemon/page/:page"  component={Pokemon} />
+      <Route path="/berries/page/:page"  component={Berries} />
+      <Route path="/machines/page/:page" component={Machines} />
       <Route path= "/background" component={Background}/>
     </div>
   </Router>
+  
 )
+
 
 
 ReactDOM.render(routing, document.getElementById('root'));
