@@ -1,0 +1,20 @@
+@import "variables";
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+body {
+  font-size: $primary-font-size;
+  background-color: $body-background;
+}
+
+.card {
+  background: $card-background;
+}
+
+.btn-primary {
+  background-color: $button-color;
+}
+
+
+  a {
+    color:#d90000;
+  }

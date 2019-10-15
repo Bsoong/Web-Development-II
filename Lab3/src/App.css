@@ -20,3 +20,32 @@
 .App-link {
   color: #09d3ac;
 }
+
+.PList2 {
+  list-style: none;
+
+}
+.PList2 a{
+  color: #3D07A3;
+
+}
+.PList li{
+  font-size: 25px;
+  border-style: inset;
+  padding: 10px;
+  width: 70%;
+  margin: auto;
+}
+
+Nav.link {
+  color: #0B031A;
+}
+
+
+.PList {
+  list-style: none;
+}
+
+.bio {
+  padding-top: 100px;
+}
